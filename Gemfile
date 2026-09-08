@@ -1,7 +1,6 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem "github-pages", group: :jekyll_plugins
+gem "github-pages", "~> 232", group: :jekyll_plugins
 gem "kramdown-parser-gfm"
 gem "jekyll-redirect-from"
-
 gem "webrick", "~> 1.8"

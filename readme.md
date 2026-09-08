@@ -2,9 +2,21 @@
 
 This is the public facing website for the Information Assurance Student Group at Iowa State University.
 
-## Updating the meeting time
+## Updating meetings
 
-The meeting time is stored as part of the file `_config.yml`. To update the meeting semester and time, change the appropriate variables in the file `semester` and `meeting_time`. This will change the meeting time everywhere that it is displayed on the site. To use the most current meeting time in any portion of the site you can use the liquid tag `{{ site.meeting_time }}`, which will be replaced with the meeting time when the site is built. The same can be done for the semester with `{{ site.semester }}` for the semester.
+Upcoming meetings are stored in `_data/meetings.yml`.
+
+- Set the current semester in `semester`.
+- Add each meeting under `occurrences` with `start` and `end`.
+- Optionally set `location` per meeting.
+- Optionally set `title` (defaults to "HACC Club Meeting").
+- Optionally set `description` (shown when present).
+- Mark a meeting with `cancelled: true` to skip it in the upcoming list.
+
+The reusable include `_includes/upcoming_meetings.html` supports `max_items`.
+
+- Homepage uses the default (`max_items=2`): next meeting (large) + following meeting (small).
+- Meetings page uses `max_items=5` to show more upcoming meetings.
 
 ## Testing the site locally
 
@@ -14,7 +26,7 @@ On a fresh installation of Ubuntu WSL2, the steps are
 
 1. Clone the repo ```git clone https://github.com/IASG/iasg.github.io```
    Note: if you are going to submit PRs you will need to use ```git@github.com:IASG/iasg.github.io.git``` after setting up ssh keys.
-   https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+   <https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent>
 2. Install Ruby development environment, and bundler ```sudo apt install ruby-dev ruby-bundler make gcc g++```
    a. GCC, G++, and Make are needed as some ruby gems are compiled on system, ran into this issue on a fresh Ubuntu 23.04 "cloud" image that did not come with them pre-installed.
 3. Install the gems with ```bundle install```

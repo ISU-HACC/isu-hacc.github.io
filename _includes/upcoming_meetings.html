@@ -1,0 +1,87 @@
+{% assign now_ts = "now" | date: "%s" | plus: 0 %} {% assign max_items =
+include.max_items | default: 2 | plus: 0 %} {% assign upcoming_count = 0 %}
+
+<section class="meeting-schedule" aria-label="Upcoming meetings">
+    {% for meeting in site.data.meetings.occurrences %} {% assign start_ts =
+    meeting.start | date: "%s" | plus: 0 %} {% if meeting.cancelled != true and
+    start_ts >= now_ts %} {% assign meeting_title = meeting.title | default:
+    site.data.meetings.default_title | default: "HACC Club Meeting" %} {% assign
+    meeting_location = meeting.location | default:
+    site.data.meetings.default_location | default: site.meeting_location %} {%
+    if upcoming_count == 0 %}
+    <article
+        class="meeting-card meeting-card-next"
+        itemscope
+        itemtype="https://schema.org/Event"
+    >
+        <p class="meeting-label">Next meeting</p>
+        <h3 class="meeting-date" itemprop="name">{{ meeting_title }}</h3>
+        <p class="meeting-when">
+            <time
+                itemprop="startDate"
+                datetime="{{ meeting.start | date_to_xmlschema }}"
+                >{{ meeting.start | date: "%A, %B %-d, %Y" }}</time
+            >
+            <span class="meeting-time"
+                >{{ meeting.start | date: "%-I:%M %p" }} - {{ meeting.end |
+                date: "%-I:%M %p" }}</span
+            >
+        </p>
+        <p
+            class="meeting-location"
+            itemprop="location"
+            itemscope
+            itemtype="https://schema.org/Place"
+        >
+            <span class="meeting-location-label">Location:</span>
+            <span itemprop="name">{{ meeting_location }}</span>
+        </p>
+        {% if meeting.description %}
+        <p class="meeting-description" itemprop="description">
+            {{ meeting.description }}
+        </p>
+        {% endif %}
+    </article>
+    {% else %}
+    <article
+        class="meeting-card meeting-card-following"
+        itemscope
+        itemtype="https://schema.org/Event"
+    >
+        {% if upcoming_count == 1 %}
+        <p class="meeting-label">Following meeting</p>
+        {% else %} {% endif %}
+        <p>
+            <time
+                itemprop="startDate"
+                datetime="{{ meeting.start | date_to_xmlschema }}"
+                >{{ meeting.start | date: "%a, %b %-d" }}</time
+            >
+            <span
+                >{{ meeting.start | date: "%-I:%M %p" }} - {{ meeting.end |
+                date: "%-I:%M %p" }}</span
+            >
+        </p>
+        <p
+            class="meeting-location-small"
+            itemprop="location"
+            itemscope
+            itemtype="https://schema.org/Place"
+        >
+            in <span itemprop="name">{{ meeting_location }}</span>
+        </p>
+        {% if meeting.description %}
+        <p class="meeting-description-small" itemprop="description">
+            {{ meeting.description }}
+        </p>
+        {% endif %}
+    </article>
+    {% endif %} {% assign upcoming_count = upcoming_count | plus: 1 %} {% if
+    upcoming_count >= max_items %} {% break %} {% endif %} {% endif %} {% endfor
+    %} {% if upcoming_count == 0 %}
+    <article class="meeting-card meeting-card-empty">
+        <p class="meeting-label">Upcoming meetings</p>
+        <p>No upcoming meetings are scheduled yet.</p>
+    </article>
+    {% endif %}
+</section>

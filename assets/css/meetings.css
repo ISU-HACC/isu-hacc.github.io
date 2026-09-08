@@ -1,0 +1,77 @@
+.meeting-schedule {
+  display: grid;
+  gap: 14px;
+  margin: 12px 0 20px;
+}
+
+.meeting-card {
+  border: 1px solid #2f4f2f;
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: rgba(24, 24, 24, 0.65);
+}
+
+.meeting-card-next {
+  border-width: 2px;
+  padding: 16px 18px;
+}
+
+.meeting-label {
+  margin: 0 0 8px;
+  font-size: 0.85rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.meeting-date {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.meeting-when {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+}
+
+.meeting-time {
+  margin-left: 10px;
+  white-space: nowrap;
+}
+
+.meeting-location {
+  margin: 0;
+}
+
+.meeting-location-label {
+  font-weight: 700;
+}
+
+.meeting-description {
+  margin: 10px 0 0;
+}
+
+.meeting-card-following p {
+  margin: 0;
+}
+
+.meeting-when-small {
+  margin-bottom: 4px !important;
+  font-weight: 700;
+}
+
+.meeting-location-small {
+  margin-top: 3px !important;
+}
+
+.meeting-description-small {
+  margin-top: 8px !important;
+  opacity: 0.95;
+}
+
+@media (max-width: 640px) {
+  .meeting-time {
+    display: block;
+    margin: 4px 0 0;
+  }
+}

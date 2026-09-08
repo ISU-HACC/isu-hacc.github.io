@@ -10,12 +10,10 @@ The Hacking and Cyber Security Club (HACC), formerly the Information Assurance S
 
 We often feature guest speakers from the security field, as well as offer introductory-level presentations for those interested in security, but without an extensive background in designing and building information systems.
 
-**Meeting Information - {{ site.semester }}**
+**Meeting Information - {{ site.data.meetings.semester | default: site.semester }}**
 -------------------
 
-**Time:** {{ site.meeting_time }}
-
-**Location:** {{ site.meeting_location }}
+{% include upcoming_meetings.html %}
 
 Discord
 --------------
@@ -25,7 +23,7 @@ The primary communication that HACC uses outside of meetings is our discord serv
 Previous Meeting Slides
 ------------------------
 
-Many of the previous meetings have recordings available on the [Youtube channel](https://www.youtube.com/channel/{{ site.youtube_channel }}). If you would like the slides from the meetings, feel free to email <{{ site.email }}>, or talk to the cabinet about getting the slides.
+Many of the previous meetings have recordings available on the [Youtube channel](<<https://www.youtube.com/channel/{{site.youtube_channel}}>). If you would like the slides from the meetings, feel free to email <{{ site.email }}>, or talk to the cabinet about getting the slides.
 
 Contact Information
 --------------

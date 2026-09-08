@@ -6,32 +6,30 @@ include-in-navbar: yes
 ---
 
 <div class="home">
+    <h1 class="page-heading">
+        Meetings - {{ site.data.meetings.semester | default: site.semester }}
+    </h1>
 
-  <h1 class="page-heading">Meetings - {{ site.semester }}</h1>
+    {% include upcoming_meetings.html max_items=5 %}
 
-  <div id="meeting_info">
-    <p>Time: {{ site.meeting_time }}</p>
+    <br />
+    <h2>Some archived meetings notes:</h2>
+    <ul class="post-list">
+        {% for post in site.posts %} {% if post.categories contains "meetings"
+        %}
+        <li style="padding-top: 15px">
+            <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
 
-    <p>Location: {{ site.meeting_location }}</p>
-  </div>
+            <h2 style="margin-bottom: 0px">
+                <a
+                    class="post-link"
+                    href="{{ post.url | prepend: site.baseurl }}"
+                    >{{ post.title }}</a
+                >
+            </h2>
 
-  <br>
-  <h2>Some archived meetings notes:</h2>
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.categories contains "meetings" %}
-        <li style="padding-top: 15px;">
-          <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-  
-          <h2 style="margin-bottom: 0px;">
-            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-          </h2>
-	  
-	       {{ post.excerpt }}
-
+            {{ post.excerpt }}
         </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-
+        {% endif %} {% endfor %}
+    </ul>
 </div>

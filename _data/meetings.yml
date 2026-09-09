@@ -1,11 +1,14 @@
 semester: Fall 2026
-default_title: HACC Club Meeting
+default_title: Upcoming HACC Meeting
 default_location: Coover 1011
 occurrences:
   - start: 2026-09-03 18:00
     end: 2026-09-03 19:30
     location: 1011 COOVER
-  - start: 2026-09-09 18:00
+  - start: 2026-09-09 18:30
+    title: HACC Cyber Orientation X TryHackMe
+    link: https://luma.com/ykeohtu9?tk=nZwRtQ
+    link_description: RSVP Now!
     end: 2026-09-09 19:30
     location: 1011 COOVER
   - start: 2026-09-16 18:00

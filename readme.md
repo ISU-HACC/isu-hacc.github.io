@@ -11,6 +11,7 @@ Upcoming meetings are stored in `_data/meetings.yml`.
 - Optionally set `location` per meeting.
 - Optionally set `title` (defaults to "HACC Club Meeting").
 - Optionally set `description` (shown when present).
+- Optionally set `link` to make the meeting title clickable.
 - Mark a meeting with `cancelled: true` to skip it in the upcoming list.
 
 The reusable include `_includes/upcoming_meetings.html` supports `max_items`.

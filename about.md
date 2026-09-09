@@ -23,9 +23,4 @@ The primary communication that HACC uses outside of meetings is our discord serv
 Previous Meeting Slides
 ------------------------
 
-Many of the previous meetings have recordings available on the [Youtube channel](<<https://www.youtube.com/channel/{{site.youtube_channel}}>). If you would like the slides from the meetings, feel free to email <{{ site.email }}>, or talk to the cabinet about getting the slides.
-
-Contact Information
---------------
-
-Contact <{{ site.email }}> or the cabinet in person if you have any questions or suggestions.
+Many of the previous meetings have recordings available on the [Youtube channel](https://www.youtube.com/channel/{{site.youtube_channel}}). If you would like the slides from the meetings, feel free to email <{{ site.email }}>, or talk to the cabinet about getting the slides.

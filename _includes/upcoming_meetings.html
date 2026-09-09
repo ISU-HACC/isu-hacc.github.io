@@ -8,7 +8,9 @@ include.max_items | default: 2 | plus: 0 %} {% assign upcoming_count = 0 %}
     site.data.meetings.default_title | default: "HACC Club Meeting" %} {% assign
     meeting_location = meeting.location | default:
     site.data.meetings.default_location | default: site.meeting_location %} {%
-    if upcoming_count == 0 %}
+    assign meeting_link = meeting.link %} {% assign meeting_link_description =
+    meeting.link_description | default: "See Details" %} {% if upcoming_count ==
+    0 %}
     <article
         class="meeting-card meeting-card-next"
         itemscope
@@ -40,6 +42,15 @@ include.max_items | default: 2 | plus: 0 %} {% assign upcoming_count = 0 %}
         <p class="meeting-description" itemprop="description">
             {{ meeting.description }}
         </p>
+        {% endif %} {% if meeting_link %}
+        <p class="meeting-link">
+            <a
+                class="meeting-link-button"
+                itemprop="url"
+                href="{{ meeting_link }}"
+                >{{ meeting_link_description }}</a
+            >
+        </p>
         {% endif %}
     </article>
     {% else %}
@@ -50,7 +61,17 @@ include.max_items | default: 2 | plus: 0 %} {% assign upcoming_count = 0 %}
     >
         {% if upcoming_count == 1 %}
         <p class="meeting-label">Following meeting</p>
-        {% else %} {% endif %}
+        {% endif %}
+        <p class="meeting-when-small" itemprop="name">
+            {% if meeting_link %}
+            <a
+                class="meeting-title-link"
+                itemprop="url"
+                href="{{ meeting_link }}"
+                >{{ meeting_title }}</a
+            >
+            {% else %} {{ meeting_title }} {% endif %}
+        </p>
         <p>
             <time
                 itemprop="startDate"
